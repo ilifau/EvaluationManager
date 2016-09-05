@@ -16,5 +16,15 @@ class ilEvaluationManagerPlugin extends ilRepositoryObjectPlugin {
         return "EvaluationManager";
     }
 
+    protected function uninstallCustom()
+    {
+        global $ilDB;
+
+        $ilDB->dropTable('rep_robj_xema_eval');
+        $ilDB->dropTable('rep_robj_xema_assign');
+        $ilDB->dropTable('rep_robj_xema_key');
+        $ilDB->dropTable('rep_robj_xema_settings');
+    }
+
 }
 ?>
