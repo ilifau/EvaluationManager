@@ -1,0 +1,150 @@
+//
+// Copyright (c) 2013 Institut für Lern-Innovation, Friedrich-Alexander-Universität Erlangen-Nürnberg 
+// GPLv2, see LICENSE 
+// 
+// German Language File for EvaluationManager Plugin
+//
+
+<!-- language file start -->
+cat_create_xema#:#Neuen Evaluations-Manager anlegen
+crs_create_xema#:#Neuen Evaluations-Manager anlegen
+xema#:#Evaluations-Manager
+xema_add#:#Hinzufügen
+xema_copy#:#Evaluations-Manager kopieren
+xema_created#:#Der Evaluations-Manager wurde hinzugefügt
+xema_delete#:#Evaluations-Manager löschen
+xema_edit_permission#:#Rechteeinstellungen ändern
+xema_helptext#:#Mit dem Evaluations-Manager können Sie die Lehrveranstaltungen und Module, die zur Lehrevaluation vorgesehen sind verwalten.
+xema_new#:#Evaluations-Manager hinzufügen
+xema_read#:#Evaluations-Manager verwenden
+xema_visible#:#Evaluations-Manager ist sichtbar
+xema_write#:#Evaluations-Manager konfigurieren
+fold_create_xema#:#Neuen Evaluations-Manager anlegen
+grp_create_xema#:#Neuen Evaluations-Manager anlegen
+obj_xema#:#Evaluations-Manager
+objs_xema#:#Evaluations-Manager
+content#:#Inhalt
+lectures#:#Lehrveranstaltungen
+modules#:#Module
+import#:#Import
+filter#:#Filter
+apply_filter#:#Filter anwenden
+semester_filter#:#Nach Semester
+course_filter#:#Nach Kurszuordnungen
+identifier#:#Kennung
+title#:#Titel
+responsible#:#Verantwortlich
+questionnaire#:#Fragebogen
+course#:#Kurszuordnung
+action_1#:#Aktion
+action_2#:#Details
+csv_export_lectures#:#Lehrveranstaltungen exportieren
+csv_import_lectures#:#Lehrveranstaltungen importieren
+csv_export_modules#:#Module exportieren
+csv_import_modules#:#Module importieren
+add_lecture#:#Lehrveranstaltung hinzufügen
+add_module#:#Modul hinzufügen
+no_courses_or_groups_found#:#Keine gefunden
+no_events_found#:#Keine Einträge gefunden
+doc_function#:#Funktion
+doc_salutation#:#Anrede
+doc_title#:#Titel
+doc_firstname#:#Vorname
+doc_lastname#:#Nachname
+doc_email#:#E-Mail
+eval_name#:#Name
+eval_key#:#Kennung
+eval_key_info#:#Die Kennung muss innerhalb des Semesters eindeitig sein!
+lec_name#:#LV-Name
+lec_key#:#LV-Kennng
+mod_name#:#Modul-Name
+mod_key#:#Modul-Kennung
+eval_type#:#Art
+eval_questionnaire#:#Fragebogen
+eval_remarks#:#Bemerkungen
+ilias_obj#:#StudOn-Objekt
+ilias_obj_info#:#Kurs oder Gruppe in StudOn
+keywords#:#Stichworte
+keywords_info#:#Mehrere Stichworte durch Komma trennen
+doc_function_demo#:#Dozent
+doc_salutation_demo#:#Herr oder Frau
+doc_title_demo#:#Prof. oder Dr.
+add_entry#:#Eintrag hinzufügen
+save_entry#:#Eintrag speichern
+select_one#:#Bitte auswählen
+course_option_all#:#Beliebige Zuordnungen
+course_option_no_courses#:#Keine Zuordnung
+course_option_one_course#:#Eine Zuordnung
+course_option_more_courses#:#Mehrere Zuordnungen
+keyword_filter#:#Stichworte
+keyword_inverse_filter#:#Stichworte negieren
+keyword_inverse_filter_info#:#Zeigt Einträge, die die angegebenen Stichworte nicht enthalten
+reset_filter#:#Filter zurücksetzen
+entry#:#Eintrag
+clean_semester_import#:#Vorhandene Einträge löschen
+clean_semester#:#Semesterauswahl
+all_semesters#:#Alle Semester
+type#:#Typ
+semester#:#Semester
+semester_demo#:#2013s
+events_deleted#:#Einträge gelöscht
+exportEvaSys#:#EvaSys-Export
+overview_marked_courses_and_groups#:#Markierte Kurse und Gruppen
+export_lec#:#Lehrveranstaltungen exportieren
+export_mod#:#Module exportieren
+apply_filter_evasys#:#Filter anwenden
+reset_filter_evasys#:#Filter zurücksetzen
+export_lectures#:#Lehrveranstaltungen exportieren
+export_modules#:#Module exportieren
+course_group#:#Kurs/Gruppe
+contakt#:#Kontaktperson
+assigned_evaluations#:#Evaluationen
+remove_mark#:#Markierung entfernen
+lecture_short_label#:#<strong>L: </strong> 
+module_short_label#:#<strong>M: </strong>
+ref_id#:#StudOn-Id
+export_lectures_to_evasys#:#Lehrveranstaltungen mit Teilnehmeradressen für EvaSys exportieren
+export_modules_to_evasys#:#Module mit Teilnehmeradressen für EvaSys exportieren
+settings#:#Einstellungen
+add_mark#:#Markierung hinzufügen
+export_overview#:#Liste exportieren
+root_ref_id#:#StudOn-Id des Gültigkeitsbereichs
+apply_settings#:#Einstellungen speichern
+edit_lecture#:#Veranstaltung bearbeiten
+edit_module#:#Modul bearbeiten
+save_lecture#:#Veranstaltung speichern
+save_module#:#Modul speichern
+confirm_delete_lectures#:#Möchten Sie die angezeigten Veranstaltungen löschen?
+confirm_delete_modules#:#Möchten Sie die angezeigten Module löschen?
+add_assignment#:#Zuordnung hinzufügen
+edit_assignment#:#Zuordnung bearbeiten
+remove_assignment#:#Zuordnung entfernen
+save_assignment#:#Zuordnung speichern
+ref_id_new_assignment#:#StudOn-Id
+ref_id_edited_assignment#:#StudOn-Id
+assignment_selection#:#Auswahl eines Kurses oder eine Gruppe
+assignment_selection_info#:#Wählen Sie einen Kurs oder eine Gruppe aus den Online-Angeboten aus. Die StudOn-Id wird dann im obigen Feld eingetragen.
+lecture_name#:#Veranstaltungs-Titel
+lecturer_name#:#Dozenten-Name
+mod_id#:#Interne Modul-Id
+lecture_lecturer#:#Veransstaltung/Dozent
+overview_created#:#Die Markierung wurde hinzugefügt.
+overview_deleted#:#Die Markierung wurde entfernt.
+nothing_to_configure#:#Für dieses Plugin ist keine Konfiguration nötig.
+select_assignment_object#:#Bitte wählen Sie einen Kurs oder eine Gruppe aus!
+confirm_delete_mark#:#Möchten Sie die ausgewählten Markierungen entfernen?
+confirm_delete_assignments#:#Möchten Sie die ausgewählten Zuordnungen entfernen?
+assignment_created#:#Die Zuordnung wurde hinzugefügt.
+assignments_deleted#:#Die Zuordnungen wurden entfernt.
+error_no_course_or_group_selected#:#Sie haben keine StudOn-ID ausgewählt!
+error_is_no_course_or_group#:#Die StudOn-Id %s gehört nicht zu einem Kurs oder einer Gruppe!
+error_course_or_group_not_in_root#:#Das Objekt zur StudOn-ID %s liegt nicht im Gültigkeitsbereich dieses Evaluations-Managers.
+exp_export_files#:#Export-Dateien
+document_name#:#Datei-Kennung
+document_name_info#:#Die Datei-Kennung um das Export-Datum zum Dateinamen ergänzt.
+msg_no_lastname_in_lecture_or_module#:#In der Evaluation '%s' fehlt der Nachname des Dozenten!
+warning_no_courses_or_groups#:#Die folgenden Zuordnungen sind keine Kurse oder Gruppen: %s.
+imported_file_has_wrong_type#:#Die Import-Datei hat einen falschen Typ (.csv erwartet).
+imported_file_has_entries_without_key_or_semester#:#Die Import-Datei hat Einträge ohne Key oder Semester.
+error_no_semester_or_key_given#:#Es wurde kein Semester oder Key angegeben!
+
