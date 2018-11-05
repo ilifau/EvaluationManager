@@ -34,6 +34,10 @@ require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/
  */
 class ilObjEvaluationManagerGUI extends ilObjectPluginGUI
 {
+    /**
+     * @var ilCtrl
+     */
+    public $ctrl;
 
 	/**
 	 * Get type.
