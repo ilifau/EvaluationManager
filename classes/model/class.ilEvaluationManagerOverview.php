@@ -53,52 +53,56 @@ class ilEvaluationManagerOverview {
         $path->enableTextOnly(false);
 
         foreach ($key_info as $row) {
+			$end_obj_id = (integer) $row["ref_id"];
+			$root_obj_id = (integer) ilObjEvaluationManager::_getRootRefId($_GET["ref_id"]);
             if ($row["type"] == "crs") {
-                $end_obj_id = (integer) $row["ref_id"];
-                $root_obj_id = (integer) ilObjEvaluationManager::_getRootRefId($_GET["ref_id"]);
-                if ($tree->isGrandChild($root_obj_id, $end_obj_id)) {
-                    $info_array[$counter]["ref_id"] = $row["ref_id"];
-                    $info_array[$counter]["title"] = $row["title"];
-                    $info_array[$counter]["path"] = $path->getPath(ROOT_FOLDER_ID, $row["ref_id"]);
-                    $info_array[$counter]["link"] = ilLink::_getStaticLink($row["ref_id"], $row['type']);
-                    $query = "SELECT contact_name, contact_email FROM crs_settings WHERE obj_id = " . $ilDB->quote($row["obj_id"], 'integer');
-                    $result = $ilDB->query($query);
-                    $data = $ilDB->fetchAssoc($result);
-                    if ($data) {
-                        $info_array[$counter]["contact_name"] = $data["contact_name"];
-                        $info_array[$counter]["contact_email"] = $data["contact_email"];
-                    }
-                    $lectures = ilEvaluationManagerOverview::_getLecturesAssigned($row["ref_id"]);
-                    $info_array[$counter]["evaluation"] = array();
-                    foreach ($lectures as $lecture) {
-                        $info_array[$counter]["evaluation"][] = $lng->txt("rep_robj_xema_lecture_short_label") . $lecture["eval_name"];
-                    }
-                    $modules = ilEvaluationManagerOverview::_getModulesAssigned($row["ref_id"]);
-                    foreach ($modules as $module) {
-                        $info_array[$counter]["evaluation"][] = $lng->txt("rep_robj_xema_module_short_label") . $module["eval_name"];
-                    }
-                }
+				//fau: added if($root_obj_id != FALSE){...} around if ($tree->isGrandChild($root_obj_id, $end_obj_id)) {...} to ensure not null
+				if($root_obj_id != FALSE){
+					if ($tree->isGrandChild($root_obj_id, $end_obj_id)) {
+						$info_array[$counter]["ref_id"] = $row["ref_id"];
+						$info_array[$counter]["title"] = $row["title"];
+						$info_array[$counter]["path"] = $path->getPath(ROOT_FOLDER_ID, $row["ref_id"]);
+						$info_array[$counter]["link"] = ilLink::_getStaticLink($row["ref_id"], $row['type']);
+						$query = "SELECT contact_name, contact_email FROM crs_settings WHERE obj_id = " . $ilDB->quote($row["obj_id"], 'integer');
+						$result = $ilDB->query($query);
+						$data = $ilDB->fetchAssoc($result);
+						if ($data) {
+							$info_array[$counter]["contact_name"] = $data["contact_name"];
+							$info_array[$counter]["contact_email"] = $data["contact_email"];
+						}
+						$lectures = ilEvaluationManagerOverview::_getLecturesAssigned($row["ref_id"]);
+						$info_array[$counter]["evaluation"] = array();
+						foreach ($lectures as $lecture) {
+							$info_array[$counter]["evaluation"][] = $lng->txt("rep_robj_xema_lecture_short_label") . $lecture["eval_name"];
+						}
+						$modules = ilEvaluationManagerOverview::_getModulesAssigned($row["ref_id"]);
+						foreach ($modules as $module) {
+							$info_array[$counter]["evaluation"][] = $lng->txt("rep_robj_xema_module_short_label") . $module["eval_name"];
+						}
+					}
+				}
             } elseif ($row["type"] == "grp") {
-                $end_obj_id = (integer) $row["ref_id"];
-                $root_obj_id = (integer) ilObjEvaluationManager::_getRootRefId($_GET["ref_id"]);
-                if ($tree->isGrandChild($root_obj_id, $end_obj_id)) {
-                    $info_array[$counter]["ref_id"] = $row["ref_id"];
-                    $info_array[$counter]["title"] = $row["title"];
-                    $info_array[$counter]["path"] = $path->getPath(ROOT_FOLDER_ID, $row["ref_id"]);
-                    $info_array[$counter]["link"] = ilLink::_getStaticLink($row["ref_id"], $row['type']);
-                    
-                    $lectures = ilEvaluationManagerOverview::_getLecturesAssigned($row["ref_id"]);
-                    $info_array[$counter]["evaluation"] = array();
-                    foreach ($lectures as $lecture) {
-                        $info_array[$counter]["evaluation"][] = $lng->txt("rep_robj_xema_lecture_short_label") . $lecture["eval_name"];
-                    }
-                    $modules = ilEvaluationManagerOverview::_getModulesAssigned($row["ref_id"]);
-                    foreach ($modules as $module) {
-                        $info_array[$counter]["evaluation"][] = $lng->txt("rep_robj_xema_module_short_label") . $module["eval_name"];
-                    }
+                //fau: added if($root_obj_id != FALSE){...} around if ($tree->isGrandChild($root_obj_id, $end_obj_id)) {...} to ensure not null
+                if($root_obj_id != FALSE){
+					if ($tree->isGrandChild($root_obj_id, $end_obj_id)) {
+						$info_array[$counter]["ref_id"] = $row["ref_id"];
+						$info_array[$counter]["title"] = $row["title"];
+						$info_array[$counter]["path"] = $path->getPath(ROOT_FOLDER_ID, $row["ref_id"]);
+						$info_array[$counter]["link"] = ilLink::_getStaticLink($row["ref_id"], $row['type']);
+
+						$lectures = ilEvaluationManagerOverview::_getLecturesAssigned($row["ref_id"]);
+						$info_array[$counter]["evaluation"] = array();
+						foreach ($lectures as $lecture) {
+							$info_array[$counter]["evaluation"][] = $lng->txt("rep_robj_xema_lecture_short_label") . $lecture["eval_name"];
+						}
+						$modules = ilEvaluationManagerOverview::_getModulesAssigned($row["ref_id"]);
+						foreach ($modules as $module) {
+							$info_array[$counter]["evaluation"][] = $lng->txt("rep_robj_xema_module_short_label") . $module["eval_name"];
+						}
+					}
                 }
             } else {
-                
+
             }
             $counter++;
         }

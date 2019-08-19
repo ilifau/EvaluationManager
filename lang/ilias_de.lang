@@ -56,7 +56,7 @@ eval_name#:#Name
 eval_key#:#Kennung
 eval_key_info#:#Die Kennung muss innerhalb des Semesters eindeitig sein!
 lec_name#:#LV-Name
-lec_key#:#LV-Kennng
+lec_key#:#LV-Kennung
 mod_name#:#Modul-Name
 mod_key#:#Modul-Kennung
 eval_type#:#Art
@@ -147,4 +147,4 @@ warning_no_courses_or_groups#:#Die folgenden Zuordnungen sind keine Kurse oder G
 imported_file_has_wrong_type#:#Die Import-Datei hat einen falschen Typ (.csv erwartet).
 imported_file_has_entries_without_key_or_semester#:#Die Import-Datei hat Einträge ohne Key oder Semester.
 error_no_semester_or_key_given#:#Es wurde kein Semester oder Key angegeben!
-
+please_select#:#Wählen
