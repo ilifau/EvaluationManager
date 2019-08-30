@@ -86,7 +86,7 @@ clean_semester#:#Semesterauswahl
 all_semesters#:#Alle Semester
 type#:#Typ
 semester#:#Semester
-semester_demo#:#2013s
+semester_demo#:#2019w
 events_deleted#:#Einträge gelöscht
 exportEvaSys#:#EvaSys-Export
 overview_marked_courses_and_groups#:#Markierte Kurse und Gruppen
