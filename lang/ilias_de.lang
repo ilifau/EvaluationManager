@@ -148,3 +148,4 @@ imported_file_has_wrong_type#:#Die Import-Datei hat einen falschen Typ (.csv erw
 imported_file_has_entries_without_key_or_semester#:#Die Import-Datei hat Einträge ohne Key oder Semester.
 error_no_semester_or_key_given#:#Es wurde kein Semester oder Key angegeben!
 please_select#:#Wählen
+objs_xema_duplicate#:#Evaluations-Manager duplizieren
