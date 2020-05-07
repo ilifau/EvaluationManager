@@ -20,6 +20,9 @@ abstract class ilObjAssignment {
     private $ilias_obj; //Course or group assigned to the evaluation
     private $type; //Type of the assignment
 
+    protected static $cache;
+
+
     /*
      * Getters and setters for atributes
      */
@@ -47,5 +50,21 @@ abstract class ilObjAssignment {
         $this->type = $var;
     }
 
+
+    public static function _preload($em_ref_id) {
+
+        static::$cache = [];
+
+        global $DIC;
+        $ilDB = $DIC->database();
+
+        $query = "SELECT a.* FROM rep_robj_xema_assign a INNER JOIN rep_robj_xema_eval e ON e.eval_id = a.eval_id"
+            . " WHERE e.em_ref_id = " . $ilDB->quote($em_ref_id, 'integer');
+
+        $res = $ilDB->query($query);
+        while ($row = $ilDB->fetchAssoc($res)) {
+            static::$cache[$row['eval_id']][] = $row;
+        }
+    }
 }
 ?>

@@ -87,7 +87,7 @@ class ilEvaluationManagerTableShowEntriesGUI extends ilTable2GUI {
 
         $this->addColumn('', 'eval_id', 1);
         $this->addColumn($lng->txt("rep_robj_xema_identifier"), "", "5%");
-        $this->addColumn($lng->txt("rep_robj_xema_title"), "", "20%");
+        $this->addColumn($lng->txt("name"), "", "20%");
         $this->addColumn($lng->txt("rep_robj_xema_responsible"), "", "20%");
         $this->addColumn($lng->txt("rep_robj_xema_questionnaire"), "", "10%");
         $this->addColumn($lng->txt("rep_robj_xema_course"), "", "20%");
@@ -190,27 +190,19 @@ class ilEvaluationManagerTableShowEntriesGUI extends ilTable2GUI {
         $this->tpl->setVariable("TXT_QUESTIONNAIRE", $entry["eval_questionnaire"]);
 
         //Assignments
-        $assignments = $entry["assignments"];
-        for ($i = 0; $i < sizeof($assignments); $i++) {
-            $this->tpl->setCurrentBlock('course_or_group');
-            $this->tpl->setVariable('TXT_COURSE', $assignments[$i]["ilias_obj"]);
-            $this->tpl->setVariable('TXT_COURSE_TITLE', $assignments[$i]["title"]);
-            $this->tpl->ParseCurrentBlock();
-        }
-
-        //Keywords
-        $keywords = $entry["keywords"];
-        if (sizeof($keywords) == 1) {
-            $this->tpl->setCurrentBlock('keywords');
-            $this->tpl->setVariable('TXT_KEYWORD', $keywords[0]);
-            $this->tpl->ParseCurrentBlock();
-        } else {
-            for ($i = 0; $i < sizeof($keywords); $i++) {
-                $this->tpl->setCurrentBlock('keywords');
-                $this->tpl->setVariable('TXT_KEYWORD', $keywords[$i]);
-                $this->tpl->ParseCurrentBlock();
+        $objects = [];
+        foreach ($entry["assignments"] as $ref_id) {
+            $obj_id = ilObject::_lookupObjId($ref_id);
+            if (!empty($obj_id) && !ilObject::_isInTrash($ref_id)) {
+                $title = ilObject::_lookupTitle($ref_id);
+                $objects[] = '<a href="'. ilLink::_getStaticLink($ref_id). '">'.$title .'</a>';
             }
         }
+        $this->tpl->setVariable("OBJECTS", implode(', ', $objects));
+
+        //Keywords
+        $this->tpl->setVariable('KEYWORDS',  implode(', ', $entry["keywords"]));
+
 
         //eval id for edit purpose
         if ($ilCtrl->getCmd() != "showRepositorySelection" AND $ilCtrl->getCmd() != "selectRepositoryItem") {
@@ -226,6 +218,7 @@ class ilEvaluationManagerTableShowEntriesGUI extends ilTable2GUI {
         $array = array();
         if (is_array($array_of_objects)) {
             foreach ($array_of_objects as $key => $entry) {
+                $data = [];
                 $data["eval_id"] = $entry->getEvalId();
                 $data["eval_semester"] = $entry->getEvalSemester();
                 $data["doc_function"] = $entry->getDocFunction();
@@ -240,21 +233,21 @@ class ilEvaluationManagerTableShowEntriesGUI extends ilTable2GUI {
                 $data["eval_questionnaire"] = $entry->getEvalQuestionnaire();
                 $data["eval_remarks"] = $entry->getEvalRemarks();
                 $data["em_ref_id"] = $entry->getEMRefId();
+                $data["keywords"] = [];
                 $keywords_object_array = $entry->getKeywords();
                 if (is_array($keywords_object_array)) {
                     foreach ($keywords_object_array as $keyword) {
                         $data["keywords"][] = $keyword->getKeyword();
                     }
                 }
+                $data["assignments"] = [];
                 $assignments_object_array = $entry->getAssignments();
                 if (is_array($assignments_object_array)) {
-                    foreach ($assignments_object_array as $key => $assignment) {
-                        $data["assignments"][$key]["ilias_obj"] = ilLink::_getStaticLink($assignment->getIliasObj());
-                        $data["assignments"][$key]["title"] = $assignment->getTitle();
+                    foreach ($assignments_object_array as $assignment) {
+                        $data["assignments"][] = $assignment->getIliasObj();
                     }
                 }
                 $array[] = $data;
-                $data = "";
             }
         }
 

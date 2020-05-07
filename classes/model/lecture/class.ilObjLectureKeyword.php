@@ -119,19 +119,29 @@ class ilObjLectureKeyword extends ilObjKeyword {
      * @param integer 	eval_id should be the eval_id of the lecture to read the keywords
      */
     public static function _readLectureKeywords($eval_id) {
-        global $ilDB;
-        $lecture_keywords = array();
 
-        $query = "SELECT * FROM rep_robj_xema_key"
+        global $DIC;
+        $ilDB = $DIC->database();
+
+        $rows = [];
+        if (isset(static::$cache)) {
+            $rows = (array) static::$cache[$eval_id];
+        }
+        else {
+            $query = "SELECT * FROM rep_robj_xema_key"
                 . " WHERE eval_id = " . $ilDB->quote($eval_id, 'integer');
-
-        $result = $ilDB->query($query);
-        while ($data = $ilDB->fetchAssoc($result)) {
-            $lecture_keyword = new ilObjLectureKeyword($data["eval_id"], $data["keyword"]);
-            $lecture_keywords[] = $lecture_keyword;
+            $result = $ilDB->query($query);
+            while ($row = $ilDB->fetchAssoc($result)) {
+                $rows[] = $row;
+            }
         }
 
-        return $lecture_keywords;
+        $keywords = [];
+        foreach ($rows as $data) {
+            $keywords[] = new ilObjLectureKeyword($data["eval_id"], $data["keyword"]);
+        }
+
+        return $keywords;
     }
     
     /**

@@ -134,6 +134,10 @@ class ilObjEvaluationManagerFilter {
 
         if ($this->getType() == 'lec') {
             require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/EvaluationManager/classes/model/lecture/class.ilObjLecture.php');
+            require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/EvaluationManager/classes/model/lecture/class.ilObjLectureAssignment.php');
+            require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/EvaluationManager/classes/model/lecture/class.ilObjLectureKeyword.php');
+            ilObjLectureAssignment::_preload($this->getEvaluationManagerRefId());
+            ilObjLectureKeyword::_preload($this->getEvaluationManagerRefId());
             return ilObjLecture::_readLectures($this->getEvaluationManagerRefId());
         } elseif ($this->getType() == 'mod') {
             require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/EvaluationManager/classes/model/module/class.ilObjModule.php');

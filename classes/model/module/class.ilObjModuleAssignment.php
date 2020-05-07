@@ -157,22 +157,30 @@ class ilObjModuleAssignment extends ilObjAssignment {
      * @param boolean 	$evasys_export If true, return a special array for the evasys export just with the ilias_obj
      */
     public static function _readModuleAssignments($eval_id, $evasys_export = false) {
-        global $ilDB;
-        $module_assignments = array();
-        if ($evasys_export) {
-            $array_for_evasys = array();
+        global $DIC;
+        $ilDB = $DIC->database();
+
+        $rows = [];
+        if (isset(static::$cache)) {
+            $rows = (array) static::$cache[$eval_id];
+        }
+        else {
+            $query = "SELECT * FROM rep_robj_xema_assign"
+                . " WHERE eval_id = " . $ilDB->quote($eval_id, 'integer')
+                . " AND type = 'mod'";
+            $result = $ilDB->query($query);
+
+            while ($row = $ilDB->fetchAssoc($result)) {
+                $rows[] = $row;
+            }
         }
 
-        $query = "SELECT * FROM rep_robj_xema_assign"
-                . " WHERE eval_id = " . $ilDB->quote($eval_id, 'integer');
+        $module_assignments = [];
+        $array_for_evasys = [];
 
-        $result = $ilDB->query($query);
-        while ($data = $ilDB->fetchAssoc($result)) {
-            if ($evasys_export) {
-                $array_for_evasys[$data["ilias_obj"]] = $data["ilias_obj"];
-            }
-            $module_assignment = new ilObjModuleAssignment($data["eval_id"], $data["ilias_obj"], $data["lecture_name"], $data["lecturer_name"]);
-            $module_assignments[] = $module_assignment;
+        foreach ($rows as $data) {
+            $array_for_evasys[$data["ilias_obj"]] = $data["ilias_obj"];
+            $module_assignments[] = new ilObjModuleAssignment($data["eval_id"], $data["ilias_obj"], $data["lecture_name"], $data["lecturer_name"]);
         }
         if ($evasys_export) {
             return $array_for_evasys;

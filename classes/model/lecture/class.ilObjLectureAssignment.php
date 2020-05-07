@@ -32,7 +32,7 @@ class ilObjLectureAssignment extends ilObjAssignment {
         $this->setAssignmentType("lec"); //Assignment type is established as lec because this is a lecture assignment.
     }
 
-    /*     * ***************************************************
+    /* ****************************************************
      * INDIVIDUAL DATABASE MANAGEMENT OF LECTURE ASSIGNMENTS ***
      * **************************************************** */
 
@@ -121,28 +121,35 @@ class ilObjLectureAssignment extends ilObjAssignment {
 
     /**
      * Read lecture assignment
-     * 
+     *
      * @param integer 	$eval_id should be the eval_id of the lecture to read the assignmen$eval_idts
      * @param boolean 	$evasys_export If true, return a special array for the evasys export just with the ilias_obj
      */
     public static function _readLectureAssignments($eval_id, $evasys_export = false) {
-        global $ilDB;
-        $lecture_assignments = array();
-        if ($evasys_export) {
-            $array_for_evasys = array();
-        }
+        global $DIC;
+        $ilDB = $DIC->database();
 
-        $query = "SELECT * FROM rep_robj_xema_assign"
+        $rows = [];
+        if (isset(static::$cache)) {
+            $rows = (array) static::$cache[$eval_id];
+        }
+        else {
+            $query = "SELECT * FROM rep_robj_xema_assign"
                 . " WHERE eval_id = " . $ilDB->quote($eval_id, 'integer')
                 . " AND type = 'lec'";
+            $result = $ilDB->query($query);
 
-        $result = $ilDB->query($query);
-        while ($data = $ilDB->fetchAssoc($result)) {
-            if ($evasys_export) {
-                $array_for_evasys[$data["ilias_obj"]] = $data["ilias_obj"];
-            }
-            $lecture_assignment = new ilObjLectureAssignment($data["eval_id"], $data["ilias_obj"]);
-            $lecture_assignments[] = $lecture_assignment;
+             while ($row = $ilDB->fetchAssoc($result)) {
+                 $rows[] = $row;
+             }
+        }
+
+        $lecture_assignments = [];
+        $array_for_evasys = [];
+
+        foreach ($rows as $data) {
+            $array_for_evasys[$data["ilias_obj"]] = $data["ilias_obj"];
+            $lecture_assignments[] = new ilObjLectureAssignment($data["eval_id"], $data["ilias_obj"]);
         }
         if ($evasys_export) {
             return $array_for_evasys;

@@ -114,22 +114,33 @@ class ilObjModuleKeyword extends ilObjKeyword {
 
     /**
      * Read module keywords
-     * 
+     *
      * @param integer 	eval_id should be the eval_id of the module to read the keywords
      */
     public static function _readModuleKeywords($eval_id) {
-        global $ilDB;
-        $module_keywords = array();
 
-        $query = "SELECT * FROM rep_robj_xema_key"
-                . " WHERE eval_id = " . $ilDB->quote($eval_id, 'integer');
+        global $DIC;
+        $ilDB = $DIC->database();
 
-        $result = $ilDB->query($query);
-        while ($data = $ilDB->fetchAssoc($result)) {
-            $module_keyword = new ilObjModuleKeyword($data["eval_id"], $data["keyword"]);
-            $module_keywords[] = $module_keyword;
+        $rows = [];
+        if (isset(static::$cache)) {
+            $rows = (array) static::$cache[$eval_id];
         }
-        return $module_keywords;
+        else {
+            $query = "SELECT * FROM rep_robj_xema_key"
+                . " WHERE eval_id = " . $ilDB->quote($eval_id, 'integer');
+            $result = $ilDB->query($query);
+            while ($row = $ilDB->fetchAssoc($result)) {
+                $rows[] = $row;
+            }
+        }
+
+        $keywords = [];
+        foreach ($rows as $data) {
+            $keywords[] = new ilObjModuleKeyword($data["eval_id"], $data["keyword"]);
+        }
+
+        return $keywords;
     }
 
     /**

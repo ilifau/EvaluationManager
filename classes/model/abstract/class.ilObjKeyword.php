@@ -20,6 +20,8 @@ abstract class ilObjKeyword {
     private $keyword; //Keyword assigned to the evaluation
     private $type; //Keyword type
 
+    protected static $cache;
+
     /*
      * Getters and setters for atributes
      */
@@ -47,5 +49,20 @@ abstract class ilObjKeyword {
         $this->type = $var;
     }
 
+    public static function _preload($em_ref_id) {
+
+        static::$cache = [];
+
+        global $DIC;
+        $ilDB = $DIC->database();
+
+        $query = "SELECT k.* FROM rep_robj_xema_key k INNER JOIN rep_robj_xema_eval e ON e.eval_id = k.eval_id"
+            . " WHERE e.em_ref_id = " . $ilDB->quote($em_ref_id, 'integer');
+
+        $res = $ilDB->query($query);
+        while ($row = $ilDB->fetchAssoc($res)) {
+            static::$cache[$row['eval_id']][] = $row;
+        }
+    }
 }
 ?>
