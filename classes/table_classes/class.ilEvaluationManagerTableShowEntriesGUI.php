@@ -194,7 +194,7 @@ class ilEvaluationManagerTableShowEntriesGUI extends ilTable2GUI {
         foreach ($entry["assignments"] as $ref_id) {
             $obj_id = ilObject::_lookupObjId($ref_id);
             if (!empty($obj_id) && !ilObject::_isInTrash($ref_id)) {
-                $title = ilObject::_lookupTitle($ref_id);
+                $title = ilObject::_lookupTitle($obj_id);
                 $objects[] = '<a href="'. ilLink::_getStaticLink($ref_id). '">'.$title .'</a>';
             }
         }
