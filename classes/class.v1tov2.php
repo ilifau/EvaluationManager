@@ -105,7 +105,7 @@ class v1tov2 {
         while ($row = $ilDB->fetchAssoc($result)) {
             $lecture_assignments[] = $row;
         }
-        if (sizeof($lecture_assignments) == 0) {
+        if (empty($lecture_assignments)) {
             return false;
         }
         return $lecture_assignments;
@@ -119,7 +119,7 @@ class v1tov2 {
         while ($row = $ilDB->fetchAssoc($result)) {
             $module_assignments[] = $row;
         }
-        if (sizeof($module_assignments) == 0) {
+        if (empty($module_assignments)) {
             return false;
         }
         return $module_assignments;
@@ -133,7 +133,7 @@ class v1tov2 {
         while ($row = $ilDB->fetchAssoc($result)) {
             $lecture_keywords[] = $row["keyword"];
         }
-        if (sizeof($lecture_keywords) == 0) {
+        if (empty($lecture_keywords)) {
             return null;
         }
         return $lecture_keywords;
@@ -147,7 +147,7 @@ class v1tov2 {
         while ($row = $ilDB->fetchAssoc($result)) {
             $module_keywords[] = $row["keyword"];
         }
-        if (sizeof($module_keywords) == 0) {
+        if (empty($module_keywords)) {
             return null;
         }
         return $module_keywords;

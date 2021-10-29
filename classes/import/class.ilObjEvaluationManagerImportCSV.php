@@ -97,6 +97,10 @@ class ilObjEvaluationManagerImportCSV {
             $titles_array = array();
             $is_module = false;
 
+            if (!is_array($titles)) {
+                $titles = [];
+            }
+
             for ($i = 0; $i < sizeof($titles); $i++) {
                 if (strtolower($titles[$i]) == "semester") {
                     $titles_array[$i] = "eval_semester";
@@ -174,7 +178,11 @@ class ilObjEvaluationManagerImportCSV {
 
             $row = 0;
             while ($data = fgetcsv($fp, 0, $this->getCSVDelimiter())) {
-                
+
+                if (!is_array($data)) {
+                    $data = [];
+                }
+
                 //Constraint for blank rows if Lecture id field is blank
                 if ($data[$semester] !== "" and $data[$key] !== "") {
                     

@@ -114,11 +114,11 @@ class ilObjEvaluationManagerFilter {
             $entries = $this->filterByNumberOfAssignments($entries);
         }
         //#4 Filter entries by keywords in case of keywords filter is active
-        if (!$this->getKeywordsInverse() AND sizeof($this->getKeywords())) {
+        if (!$this->getKeywordsInverse() AND is_array($this->getKeywords()) AND sizeof($this->getKeywords())) {
             $entries = $this->filterByKeywords($entries);
         }
         //#5 Filter entries by inverse keywords in case of keywords inverse filter is active
-        if ($this->getKeywordsInverse() AND sizeof($this->getKeywords())) {
+        if ($this->getKeywordsInverse() AND is_array($this->getKeywords()) AND sizeof($this->getKeywords())) {
             $entries = $this->filterByKeywordsInverse($entries);
         }
         //#6 Return the array of entries as the final entries.
