@@ -9,7 +9,7 @@
  * Copyright (c) 1998-2013 ILIAS open source, Extended GPL, see docs/LICENSE
  */
 require_once("./Services/Repository/classes/class.ilObjectPluginGUI.php");
-require_once('./Services/Utilities/classes/class.ilSessionValues.php');
+require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/EvaluationManager/classes/class.ilSessionValuesEM.php');
 require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/EvaluationManager/classes/class.ilObjEvaluationManager.php');
 require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/EvaluationManager/classes/table_classes/class.ilEvaluationManagerTableShowEntriesGUI.php');
 require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/EvaluationManager/classes/table_classes/class.ilEvaluationManagerTableEvaSysExportGUI.php');
@@ -52,8 +52,8 @@ class ilObjEvaluationManagerGUI extends ilObjectPluginGUI
 	 */
 	protected function afterConstructor()
 	{
-		require_once('./Services/Utilities/classes/class.ilSessionValues.php');
-		$this->session = new ilSessionValues(get_class($this));
+		require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/EvaluationManager/classes/class.ilSessionValuesEM.php');
+		$this->session = new ilSessionValuesEM(get_class($this));
 	}
 
 	/**

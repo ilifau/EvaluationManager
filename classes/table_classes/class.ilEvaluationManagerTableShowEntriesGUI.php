@@ -6,7 +6,7 @@
  */
 require_once("./Services/Table/classes/class.ilTable2GUI.php");
 require_once('./Services/Link/classes/class.ilLink.php');
-require_once('./Services/Utilities/classes/class.ilSessionValues.php');
+require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/EvaluationManager/classes/class.ilSessionValuesEM.php');
 require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/EvaluationManager/classes/class.ilObjEvaluationManager.php');
 
 /**
@@ -69,7 +69,7 @@ class ilEvaluationManagerTableShowEntriesGUI extends ilTable2GUI {
 
         global $ilCtrl, $lng;
 
-        $this->session = new ilSessionValues(get_class($parent_obj));
+        $this->session = new ilSessionValuesEM(get_class($parent_obj));
 
         if ($this->getTableType() == "lec") {
             $this->setTitle($lng->txt("rep_robj_xema_lectures"));
@@ -119,7 +119,7 @@ class ilEvaluationManagerTableShowEntriesGUI extends ilTable2GUI {
 
         global $ilCtrl, $lng;
 
-        $this->session = new ilSessionValues(get_class($parent_obj));
+        $this->session = new ilSessionValuesEM(get_class($parent_obj));
 
         if ($this->getTableType() == "lec") {
             $this->setTitle($lng->txt("rep_robj_xema_export_lectures_to_evasys"));

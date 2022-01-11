@@ -9,7 +9,7 @@ require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/
 require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/EvaluationManager/classes/class.ilObjEvaluationManagerGUI.php');
 require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/EvaluationManager/classes/class.ilObjEvaluationManagerEvaSysGUI.php');
 require_once('./Services/Link/classes/class.ilLink.php');
-require_once('./Services/Utilities/classes/class.ilSessionValues.php');
+require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/EvaluationManager/classes/class.ilSessionValuesEM.php');
 
 /**
  * Table class for Evaluation Manager repository object.
@@ -34,7 +34,7 @@ class ilEvaluationManagerTableGUI extends ilTable2GUI {
 
         global $ilCtrl, $lng;
 
-        $this->session = new ilSessionValues(get_class($a_parent_obj));
+        $this->session = new ilSessionValuesEM(get_class($a_parent_obj));
 
         if ($a_type == "Lectures") {
         	$this->setTitle($lng->txt("rep_robj_xema_lectures"));
