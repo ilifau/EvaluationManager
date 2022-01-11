@@ -28,7 +28,7 @@ require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/
  * $Id$
  *
  * @ilCtrl_isCalledBy ilObjEvaluationManagerGUI: ilRepositoryGUI, ilAdministrationGUI, ilObjPluginDispatchGUI
- * @ilCtrl_Calls ilObjEvaluationManagerGUI: ilPermissionGUI, ilInfoScreenGUI, ilObjectCopyGUI,
+ * @ilCtrl_Calls ilObjEvaluationManagerGUI: ilPermissionGUI, ilInfoScreenGUI, ilObjectCopyGUI
  * @ilCtrl_Calls ilObjEvaluationManagerGUI: ilPropertyFormGUI, ilPageObjectGUI, ilRepositorySelectorInputGUI
  * @ilCtrl_Calls ilObjEvaluationManagerGUI: ilCommonActionDispatcherGUI
  */
