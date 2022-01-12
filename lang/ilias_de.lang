@@ -23,6 +23,8 @@ fold_create_xema#:#Neuen Evaluations-Manager anlegen
 grp_create_xema#:#Neuen Evaluations-Manager anlegen
 obj_xema#:#Evaluations-Manager
 objs_xema#:#Evaluations-Manager
+objs_xema_duplicate#:#Evaluations-Manager kopieren
+obj_xema_duplicate#:#Evaluations-Manager kopieren
 content#:#Inhalt
 lectures#:#Lehrveranstaltungen
 modules#:#Module
