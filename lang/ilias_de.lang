@@ -25,6 +25,7 @@ obj_xema#:#Evaluations-Manager
 objs_xema#:#Evaluations-Manager
 objs_xema_duplicate#:#Evaluations-Manager kopieren
 obj_xema_duplicate#:#Evaluations-Manager kopieren
+please_select#:#bitte auswählen
 content#:#Inhalt
 lectures#:#Lehrveranstaltungen
 modules#:#Module
