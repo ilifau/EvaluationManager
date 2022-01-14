@@ -131,3 +131,15 @@ if (!$ilDB->tableExists("rep_robj_xema_settings")) {
     $ilDB->addPrimaryKey("rep_robj_xema_settings", array("ref_id"));
 }
 ?>
+<#5>
+<?php
+    /**
+     * Create the table to mark objects for evaluation
+     */
+    if (!$ilDB->tableExists('eval_marked_objects')) {
+        $ilDB->createTable('eval_marked_objects', array(
+            'ref_id' => array('type' => 'integer', 'length' => 4, 'notnull' => true)
+        ));
+        $ilDB->addPrimaryKey('eval_marked_objects', array('ref_id'));
+    }
+?>
