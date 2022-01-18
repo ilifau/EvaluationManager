@@ -56,6 +56,7 @@ class ilEvaluationManagerOverview {
             if ($row["type"] == "crs") {
                 $end_obj_id = (integer) $row["ref_id"];
                 $root_obj_id = (integer) ilObjEvaluationManager::_getRootRefId($_GET["ref_id"]);
+                if(!$root_obj_id) $root_obj_id = 1; 
                 if ($tree->isGrandChild($root_obj_id, $end_obj_id)) {
                     $info_array[$counter]["ref_id"] = $row["ref_id"];
                     $info_array[$counter]["title"] = $row["title"];
