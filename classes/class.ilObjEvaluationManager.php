@@ -271,7 +271,7 @@ class ilObjEvaluationManager extends ilObjectPlugin {
         global $ilDB;
 
         //#1 Select all the eval_id to delete all the assignments with these eval_ids
-        $select_query = "SELECT eval_id FROM "
+        $select_query = "SELECT eval_id FROM rep_robj_xema_eval"
                 . " WHERE em_ref_id = " . $ilDB->quote($ref_id, 'integer')
                 . " AND eval_type = " . $ilDB->quote($type, 'text');
         if ($semester) {

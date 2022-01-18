@@ -260,7 +260,7 @@ class ilEvaluationManagerTableShowEntriesGUI extends ilTable2GUI {
                     }
                 }
                 $array[] = $data;
-                $data = "";
+                $data = array();
             }
         }
 
