@@ -157,7 +157,7 @@ class ilObjLecture extends ilObjEvaluation {
         //Get next Id for the lecture and set as current eval_id
         $this->setEvalId($ilDB->nextId('rep_robj_xema_eval'));
 
-        $ilDB->insert("rep_robj_xema_eval ", array(
+        $ilDB->insert("rep_robj_xema_eval", array(
             "eval_id" => array("integer", $this->getEvalId()),
             "eval_semester" => array("text", strtolower($this->getEvalSemester())),
             "doc_function" => array("text", $this->getDocFunction()),
@@ -187,7 +187,7 @@ class ilObjLecture extends ilObjEvaluation {
     public function updateLecture($eval_id, $lecture) {
         global $ilDB;
 
-        $ilDB->replace("rep_robj_xema_eval ", array(
+        $ilDB->replace("rep_robj_xema_eval", array(
             "eval_id" => array("integer", $eval_id)), array(
             "eval_semester" => array("text", strtolower($lecture->getEvalSemester())),
             "doc_function" => array("text", $lecture->getDocFunction()),

@@ -161,7 +161,7 @@ class ilEvaluationManagerOverview {
     public static function _addMarkToObj($ref_id) {
         global $ilDB;
         if (!ilEvaluationManagerOverview::_isMarked((integer) $ref_id)) {
-            $ilDB->insert("eval_marked_objects ", array(
+            $ilDB->insert("eval_marked_objects", array(
                 "ref_id" => array("integer", $ilDB->quote($ref_id, 'integer')))
             );
         }

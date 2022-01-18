@@ -191,24 +191,30 @@ class ilEvaluationManagerTableShowEntriesGUI extends ilTable2GUI {
 
         //Assignments
         $assignments = $entry["assignments"];
-        for ($i = 0; $i < sizeof($assignments); $i++) {
-            $this->tpl->setCurrentBlock('course_or_group');
-            $this->tpl->setVariable('TXT_COURSE', $assignments[$i]["ilias_obj"]);
-            $this->tpl->setVariable('TXT_COURSE_TITLE', $assignments[$i]["title"]);
-            $this->tpl->ParseCurrentBlock();
+        if(!empty($assignments))
+        {
+            for ($i = 0; $i < sizeof($assignments); $i++) {
+                $this->tpl->setCurrentBlock('course_or_group');
+                $this->tpl->setVariable('TXT_COURSE', $assignments[$i]["ilias_obj"]);
+                $this->tpl->setVariable('TXT_COURSE_TITLE', $assignments[$i]["title"]);
+                $this->tpl->ParseCurrentBlock();
+            }
         }
 
         //Keywords
         $keywords = $entry["keywords"];
-        if (sizeof($keywords) == 1) {
-            $this->tpl->setCurrentBlock('keywords');
-            $this->tpl->setVariable('TXT_KEYWORD', $keywords[0]);
-            $this->tpl->ParseCurrentBlock();
-        } else {
-            for ($i = 0; $i < sizeof($keywords); $i++) {
+        if(!empty($keywords))
+        {
+            if (sizeof($keywords) == 1) {
                 $this->tpl->setCurrentBlock('keywords');
-                $this->tpl->setVariable('TXT_KEYWORD', $keywords[$i]);
+                $this->tpl->setVariable('TXT_KEYWORD', $keywords[0]);
                 $this->tpl->ParseCurrentBlock();
+            } else {
+                for ($i = 0; $i < sizeof($keywords); $i++) {
+                    $this->tpl->setCurrentBlock('keywords');
+                    $this->tpl->setVariable('TXT_KEYWORD', $keywords[$i]);
+                    $this->tpl->ParseCurrentBlock();
+                }
             }
         }
 

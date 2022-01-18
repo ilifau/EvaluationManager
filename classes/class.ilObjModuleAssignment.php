@@ -104,7 +104,7 @@ class ilObjModuleAssignment {
     public static function _deleteModuleAssignment($eval_id, $ilias_obj) {
         global $ilDB;
 
-        $query = "DELETE FROM rep_robj_xema_as_mod "
+        $query = "DELETE FROM rep_robj_xema_as_mod"
                 . " WHERE eval_id = " . $ilDB->quote($eval_id, 'integer')
                 . " AND ilias_obj = " . $ilDB->quote($ilias_obj, 'integer');
 
