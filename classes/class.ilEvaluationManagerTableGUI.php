@@ -7,7 +7,7 @@
 require_once("./Services/Table/classes/class.ilTable2GUI.php");
 require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/EvaluationManager/classes/class.ilObjEvaluationManager.php');
 require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/EvaluationManager/classes/class.ilObjEvaluationManagerGUI.php');
-require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/EvaluationManager/classes/class.ilObjEvaluationManagerEvaSysGUI.php');
+// require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/EvaluationManager/classes/class.ilObjEvaluationManagerEvaSysGUI.php');
 require_once('./Services/Link/classes/class.ilLink.php');
 require_once('./Customizing/global/plugins/Services/Repository/RepositoryObject/EvaluationManager/classes/class.ilSessionValuesEM.php');
 
